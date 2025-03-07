@@ -1,5 +1,8 @@
 import tensorflow as tf
 import os
+import tensorflow as tf
+from tensorflow import keras
+from keras import layers, models
 
 # Define dataset paths
 train_dir = "dataset/train"
@@ -25,7 +28,6 @@ val_dataset = tf.keras.utils.image_dataset_from_directory(
     shuffle=False
 )
 
-# Get class names (should be ['fractured', 'not_fractured'])
 class_names = train_dataset.class_names
 print("Class names:", class_names)
 
@@ -41,10 +43,6 @@ for images, labels in train_dataset.take(1):
     print("Batch shape:", images.shape)
     print("Labels:", labels.numpy())
     
-
-import tensorflow as tf
-from tensorflow import keras
-from keras import layers, models
 
 # Define Data Augmentation Layer
 data_augmentation = keras.Sequential([
@@ -82,7 +80,7 @@ model.compile(optimizer='adam',
 model.summary()
 
 # Set training parameters
-epochs = 10  # Start with 10, can be increased later
+epochs = 10  
 batch_size = 32  
 
 # Train the model
